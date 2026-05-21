@@ -1,0 +1,56 @@
+.sim-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(14px);
+}
+.sim-modal {
+  width: min(520px, 100%);
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(37, 99, 235, 0.2),
+      transparent 42%
+    ),
+    rgba(15, 23, 42, 0.96);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+.sim-modal-badge {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(251, 191, 36, 0.12);
+  color: #fde68a;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+.sim-modal h2 {
+  margin: 16px 0 10px;
+  font-size: 2rem;
+  letter-spacing: -0.05em;
+}
+.sim-modal p {
+  color: #94a3b8;
+  line-height: 1.7;
+}
+.sim-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+@media (max-width: 520px) {
+  .sim-modal {
+    padding: 20px;
+  }
+  .sim-modal-actions {
+    flex-direction: column;
+  }
+}

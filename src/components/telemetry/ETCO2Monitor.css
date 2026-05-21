@@ -1,0 +1,24 @@
+.etco2-monitor {
+  height: 130px;
+  padding: 12px;
+  border-radius: 22px;
+  background: rgba(2, 6, 23, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.etco2-monitor .mini-monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.etco2-monitor .mini-monitor-header span {
+  color: #94a3b8;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+.etco2-monitor .mini-monitor-header strong { color: #fbbf24; }
+.etco2-wave i {
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.95), rgba(251, 191, 36, 0.22));
+  box-shadow: 0 0 12px #fbbf24;
+}

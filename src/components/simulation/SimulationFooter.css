@@ -1,0 +1,7 @@
+.simulation-footer-sim {
+  margin-top: 18px;
+  padding: 18px;
+  border-color: rgba(251, 191, 36, 0.14) !important;
+}
+.simulation-footer-sim strong { color: #fbbf24; }
+.simulation-footer-sim p { color: #cbd5e1; line-height: 1.6; margin-top: 8px; }

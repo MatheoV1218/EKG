@@ -1,0 +1,58 @@
+.sim-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.22s ease;
+}
+.sim-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.92;
+}
+.sim-button span {
+  position: relative;
+  z-index: 2;
+}
+.sim-button.primary::before {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+.sim-button.secondary::before {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.26),
+    rgba(15, 23, 42, 0.9)
+  );
+}
+.sim-button.danger::before {
+  background: linear-gradient(135deg, #dc2626, #7f1d1d);
+}
+.sim-button.success::before {
+  background: linear-gradient(135deg, #16a34a, #14532d);
+}
+.sim-button.warning::before {
+  background: linear-gradient(135deg, #f59e0b, #92400e);
+}
+.sim-button.ghost::before {
+  background: rgba(255, 255, 255, 0.04);
+}
+.sim-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+.sim-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.sim-button.full-width {
+  width: 100%;
+}

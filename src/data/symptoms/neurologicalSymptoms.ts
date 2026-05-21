@@ -1,0 +1,17 @@
+export const neurologicalSymptoms = [
+  "confusion",
+  "slurred speech",
+  "unresponsive",
+  "seizure activity",
+  "decreased responsiveness",
+  "agitation",
+  "anxiety",
+  "combativeness",
+  "memory loss",
+  "unable to follow commands",
+  "dilated pupils",
+  "unequal pupils",
+  "headache",
+  "visual disturbances",
+  "new onset lethargy",
+];

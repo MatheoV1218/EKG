@@ -1,0 +1,34 @@
+.sim-layout {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding: 28px;
+}
+
+.sim-section {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 18, 37, 0.82),
+      rgba(2, 6, 23, 0.94)
+    );
+
+  border-radius: 26px;
+
+  border: 1px solid
+    rgba(59, 130, 246, 0.16);
+
+  padding: 24px;
+}
+
+.sim-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 24px;
+}

@@ -1,0 +1,14 @@
+.performance-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.performance-breakdown div {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.performance-breakdown span { display: block; color: #94a3b8; font-weight: 900; margin-bottom: 6px; }
+.performance-breakdown strong { color: #fbbf24; font-size: 1.6rem; }
+@media (max-width: 650px) { .performance-breakdown { grid-template-columns: 1fr; } }

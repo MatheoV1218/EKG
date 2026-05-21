@@ -1,0 +1,68 @@
+.telemetry-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(140px, 1fr));
+
+  gap: 14px;
+}
+
+.telemetry-card {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 20, 40, 0.88),
+      rgba(2, 6, 23, 0.96)
+    );
+
+  border: 1px solid
+    rgba(59, 130, 246, 0.16);
+
+  border-radius: 18px;
+
+  padding: 16px;
+}
+
+.telemetry-card span {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 0.78rem;
+
+  margin-bottom: 8px;
+}
+
+.telemetry-card strong {
+  color: white;
+
+  font-size: 1.3rem;
+}
+
+.telemetry-alarms {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.telemetry-alarm {
+  background:
+    rgba(239, 68, 68, 0.18);
+
+  border: 1px solid
+    rgba(239, 68, 68, 0.34);
+
+  color: #fecaca;
+
+  padding: 10px 14px;
+
+  border-radius: 999px;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+}

@@ -1,0 +1,14 @@
+.rosc-overlay {
+  position: fixed;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.18);
+  border: 1px solid rgba(34, 197, 94, 0.32);
+  color: #dcfce7;
+  font-weight: 900;
+  box-shadow: 0 0 28px rgba(34, 197, 94, 0.2);
+}

@@ -1,0 +1,9 @@
+.live-monitor {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+  width: 100%;
+}

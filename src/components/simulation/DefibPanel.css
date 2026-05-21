@@ -1,0 +1,30 @@
+.sim-action-module {
+  padding: 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(37, 99, 235, 0.12),
+      transparent 40%
+    ),
+    rgba(15, 23, 42, 0.82);
+}
+.sim-action-module-header {
+  margin-bottom: 14px;
+}
+.sim-action-module-header span {
+  color: #94a3b8;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+.sim-action-module-header h2 {
+  margin-top: 5px;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+.sim-action-button-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}

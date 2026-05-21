@@ -1,0 +1,20 @@
+.oxygenation-card {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.oxygenation-card span {
+  display: block;
+  color: #94a3b8;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.oxygenation-card strong {
+  color: #bfdbfe;
+  font-size: 1.1rem;
+}
+.oxygenation-normal strong { color: #86efac; }
+.oxygenation-mild-hypoxia strong { color: #fbbf24; }
+.oxygenation-moderate-hypoxia strong,
+.oxygenation-severe-hypoxia strong { color: #fca5a5; }

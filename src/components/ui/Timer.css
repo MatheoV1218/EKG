@@ -1,0 +1,32 @@
+.sim-timer {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.sim-timer span {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+.sim-timer strong {
+  color: #fbbf24;
+  font-size: 1.3rem;
+  letter-spacing: -0.04em;
+}
+.sim-timer.urgent {
+  border-color: rgba(239, 68, 68, 0.35);
+  animation: timerBlink 1s infinite;
+}
+@keyframes timerBlink {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.16);
+  }
+}

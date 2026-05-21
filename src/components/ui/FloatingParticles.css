@@ -1,0 +1,46 @@
+.sim-particles {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  overflow: hidden;
+}
+
+.sim-particles span {
+  position: absolute;
+
+  width: calc(3px + (var(--i) * 0.4px));
+  height: calc(3px + (var(--i) * 0.4px));
+
+  border-radius: 999px;
+
+  left: calc(var(--i) * 4%);
+  top: calc(var(--i) * 5%);
+
+  background: rgba(34, 211, 238, 0.18);
+
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.22);
+
+  animation: simParticleFloat
+    calc(9s + var(--i) * 0.4s)
+    ease-in-out infinite;
+}
+
+@keyframes simParticleFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+
+    opacity: 0.15;
+  }
+
+  50% {
+    transform: translate3d(20px, -34px, 0);
+
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,23 @@
+.sim-section-header {
+  margin-bottom: 18px;
+}
+.sim-section-header span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: #fbbf24;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sim-section-header h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+.sim-section-header p {
+  max-width: 760px;
+  margin-top: 10px;
+  color: #94a3b8;
+  line-height: 1.65;
+}

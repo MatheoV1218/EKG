@@ -1,0 +1,50 @@
+.action-panel-sim {
+  padding: 18px;
+  position: sticky;
+  top: 100px;
+}
+.action-panel-head span,
+.action-group h3 {
+  color: #94a3b8;
+  font-weight: 900;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.action-panel-head h2 {
+  margin: 6px 0 18px;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+}
+.action-group {
+  margin-bottom: 16px;
+}
+.action-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 8px;
+}
+.action-list button {
+  width: 100%;
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.14);
+  color: white;
+  font-weight: 850;
+  padding: 11px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+.action-list button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(251, 191, 36, 0.28);
+  background: rgba(37, 99, 235, 0.24);
+}
+@media (max-width: 1050px) {
+  .action-panel-sim { position: static; }
+  .action-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .action-list { grid-template-columns: 1fr; }
+}

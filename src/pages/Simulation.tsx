@@ -1,69 +1,109 @@
-import { simulations } from "../data/simulations";
+import { useMemo } from "react";
+
+import { useSimulation } from "../hooks/useSimulation";
+
+import EKGCanvas from "../components/telemetry/EKGCanvas";
+import AlarmBanner from "../components/telemetry/AlarmBanner";
+import RhythmLabel from "../components/telemetry/RhythmLabel";
+import TelemetryGrid from "../components/telemetry/TelemetryGrid";
+
+import SimulationHeader from "../components/simulation/SimulationHeader";
+import SimulationFooter from "../components/simulation/SimulationFooter";
+import ActionPanel from "../components/simulation/ActionPanel";
+import PatientStatusPanel from "../components/simulation/PatientStatusPanel";
+import EventFeed from "../components/simulation/EventFeed";
+
+import FinalGrade from "../components/results/FinalGrade";
+import PerformanceBreakdown from "../components/results/PerformanceBreakdown";
+import MistakesPanel from "../components/results/MistakesPanel";
+import TimelineReview from "../components/results/TimelineReview";
+import OutcomeSummary from "../components/results/OutcomeSummary";
+
+import PauseOverlay from "../components/overlays/PauseOverlay";
+import SuccessOverlay from "../components/overlays/SuccessOverlay";
+import DeathOverlay from "../components/overlays/DeathOverlay";
+
 import "./Simulation.css";
 
 function Simulation() {
-  const preview = simulations[0];
+  const { state, performAction, resetSimulation, togglePause, requiredProgress } = useSimulation();
+
+  const isExpired = state.phase === "expired";
+  const isCompleteButNotExpired = state.completed && !isExpired;
+
+  const monitorClass = useMemo(() => {
+    if (state.phase === "arrest" || state.phase === "expired") return "critical";
+    if (state.phase === "critical") return "warning";
+    return "stable";
+  }, [state.phase]);
 
   return (
-    <section className="page simulation-page">
-      <div className="sim-header">
-        <span className="badge">Patient Simulation</span>
-        <h1 className="section-title">
-          Treat the patient. Watch the monitor. Learn from the outcome.
-        </h1>
-        <p className="section-subtitle">
-          This is the visual shell for the future simulator. Later, the buttons
-          will change vitals, rhythm, symptoms, and final outcomes.
-        </p>
+    <section className={`page simulation-page upgraded-sim ${monitorClass}`}>
+      <SimulationHeader
+        state={state}
+        progress={requiredProgress}
+        onPause={togglePause}
+        onReset={resetSimulation}
+      />
+
+      <div className="sim-command-layout">
+        <main className="sim-main-stack">
+          <section className="sim-monitor-deck glass-card">
+            <div className="sim-monitor-topline">
+              <div>
+                <span>Central Monitor</span>
+                <h2>{state.patient.name}</h2>
+              </div>
+              <RhythmLabel rhythm={state.rhythm} />
+            </div>
+
+            <AlarmBanner alarms={state.activeAlarms} />
+
+            <div className="sim-ekg-frame">
+              <EKGCanvas rhythm={state.rhythm} heartRate={state.vitals.heartRate} height={270} />
+            </div>
+
+            <TelemetryGrid state={state} />
+          </section>
+
+          <div className="sim-lower-grid">
+            <PatientStatusPanel state={state} />
+            <EventFeed events={state.eventFeed} />
+          </div>
+
+          {state.completed && (
+            <section className="sim-results-deck glass-card">
+              <div className="results-title-row">
+                <span className="badge">Debrief</span>
+                <h2>Simulation Report</h2>
+              </div>
+
+              <div className="results-grid-sim">
+                <FinalGrade score={state.score} />
+                <OutcomeSummary outcome={state.outcome} />
+                <PerformanceBreakdown
+                  progress={requiredProgress}
+                  mistakes={state.mistakes.length}
+                  score={state.score}
+                />
+              </div>
+
+              <div className="results-review-grid">
+                <MistakesPanel mistakes={state.mistakes} />
+                <TimelineReview timeline={state.timeline} />
+              </div>
+            </section>
+          )}
+
+          <SimulationFooter outcome={state.outcome} />
+        </main>
+
+        <ActionPanel onAction={performAction} />
       </div>
 
-      <div className="sim-layout">
-        <div className="patient-monitor glass-card">
-          <div className="monitor-header">
-            <div>
-              <span>Case 01</span>
-              <h2>{preview.title}</h2>
-            </div>
-            <strong>{preview.status}</strong>
-          </div>
-
-          <div className="large-ekg">
-            <div className="monitor-line"></div>
-          </div>
-
-          <div className="sim-vitals">
-            <div>
-              <span>HR</span>
-              <strong>{preview.heartRate}</strong>
-            </div>
-            <div>
-              <span>SpO₂</span>
-              <strong>{preview.spo2}%</strong>
-            </div>
-            <div>
-              <span>BP</span>
-              <strong>{preview.bloodPressure}</strong>
-            </div>
-          </div>
-        </div>
-
-        <aside className="treatment-panel glass-card">
-          <h2>Actions</h2>
-
-          <button>Apply Oxygen</button>
-          <button>Give Medication</button>
-          <button>Prepare Defibrillation</button>
-          <button>Reassess Patient</button>
-
-          <div className="clinical-note">
-            <strong>Clinical Note</strong>
-            <p>
-              Future feedback will explain why each action helped, failed, or
-              made the patient worse.
-            </p>
-          </div>
-        </aside>
-      </div>
+      <PauseOverlay paused={state.paused} onResume={togglePause} />
+      <SuccessOverlay show={isCompleteButNotExpired} outcome={state.outcome} onRestart={resetSimulation} />
+      <DeathOverlay show={isExpired} onRestart={resetSimulation} />
     </section>
   );
 }

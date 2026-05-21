@@ -8,11 +8,5 @@ export const names = [
   "Anthony Turner", "Nora Phillips", "Christopher Parker", "Aria Evans", "Andrew Edwards", "Scarlett Collins",
   "Joshua Stewart", "Chloe Sanchez", "Dylan Morris", "Layla Rogers", "Caleb Reed", "Zoey Cook",
   "Ryan Morgan", "Penelope Bell", "Julian Brooks", "Camila Flores", "Aaron Foster", "Gianna Russell",
-  "Isaac Price", "Naomi Bennett", "Levi Coleman", "Aurora Jenkins", "Nathan Powell", "Savannah Long",
-  "Adrian Brooks", "Maya Hernandez", "Owen Bailey", "Nina Patel", "Gabriel Rivera", "Aaliyah Robinson",
-  "Miles Cooper", "Elena Torres", "Jaxon Ward", "Leah Simmons", "Dominic Hughes", "Stella Bryant",
-  "Carter Morgan", "Ivy Flores", "Thomas Reyes", "Ruby Sanders", "Nolan Gray", "Hazel Foster",
-  "Easton Hayes", "Violet Coleman", "Robert Jenkins", "Clara Russell", "Kai Patterson", "Sarah Bennett",
-  "Ian Griffin", "Madeline Perry", "Leo Barnes", "Eva Powell", "Jason Brooks", "Sienna Long",
-  "Victor Reed", "Natalie Cook", "Oscar Kelly", "Jasmine Murphy", "Marcus Bell", "Arianna Wood"
+  "Isaac Price", "Naomi Bennett", "Levi Coleman", "Aurora Jenkins", "Nathan Powell", "Savannah Long"
 ];

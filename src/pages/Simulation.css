@@ -1,136 +1,149 @@
-.sim-header {
-  margin-bottom: 18px;
+.simulation-page.upgraded-sim {
+  position: relative;
+  overflow-x: hidden;
 }
 
-.sim-layout {
+.simulation-page.upgraded-sim::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(37, 99, 235, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 20%, rgba(34, 211, 238, 0.08), transparent 26%),
+    radial-gradient(circle at 70% 90%, rgba(251, 191, 36, 0.08), transparent 28%);
+}
+
+.simulation-page.critical::after,
+.simulation-page.warning::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.simulation-page.critical::after {
+  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.1), transparent 55%);
+}
+
+.simulation-page.warning::after {
+  background: radial-gradient(circle at center, rgba(251, 191, 36, 0.07), transparent 55%);
+}
+
+.sim-command-layout {
   display: grid;
-  grid-template-columns: 1fr 280px;
-
-  gap: 16px;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+  align-items: start;
 }
 
-.patient-monitor,
-.treatment-panel {
-  padding: 18px;
+.sim-main-stack {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
 }
 
-.monitor-header {
+.sim-monitor-deck {
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sim-monitor-deck::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent);
+}
+
+.sim-monitor-topline {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
-
+  align-items: flex-start;
+  gap: 14px;
   margin-bottom: 14px;
 }
 
-.monitor-header span,
-.monitor-header strong {
-  color: var(--muted);
+.sim-monitor-topline span {
+  color: #94a3b8;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
 }
 
-.monitor-header h2 {
-  margin: 4px 0 0;
+.sim-monitor-topline h2 {
+  margin-top: 6px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  letter-spacing: -0.05em;
+}
 
-  font-size: 1.7rem;
+.sim-ekg-frame {
+  margin: 14px 0;
+  position: relative;
+  z-index: 2;
+}
 
+.sim-lower-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.sim-results-deck {
+  padding: 22px;
+}
+
+.results-title-row h2 {
+  margin: 10px 0 18px;
+  font-size: 2rem;
   letter-spacing: -0.04em;
 }
 
-.large-ekg {
-  min-height: 220px;
-
-  display: flex;
-  align-items: center;
-
-  border-radius: 22px;
-
-  padding: 20px;
-
-  background:
-    linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
-    rgba(2, 6, 23, 0.82);
-
-  background-size: 26px 26px;
-
-  border: 1px solid rgba(34, 211, 238, 0.12);
-}
-
-.sim-vitals {
+.results-grid-sim {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 12px;
-
-  margin-top: 14px;
+  grid-template-columns: 260px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-bottom: 18px;
 }
 
-.sim-vitals div {
-  padding: 16px;
-
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.05);
+.results-grid-sim .performance-breakdown {
+  grid-column: 1 / -1;
 }
 
-.sim-vitals span {
-  color: var(--muted);
-
-  font-weight: 800;
+.results-review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
-.sim-vitals strong {
-  display: block;
-
-  font-size: 1.7rem;
-
-  color: var(--gold);
-}
-
-.treatment-panel button {
-  width: 100%;
-
-  margin-bottom: 10px;
-
-  padding: 13px;
-
-  border-radius: 16px;
-
-  border: none;
-
-  background: rgba(37, 99, 235, 0.14);
-
-  color: white;
-
-  font-weight: 800;
-}
-
-.clinical-note {
-  margin-top: 14px;
-
-  padding: 16px;
-
-  border-radius: 18px;
-
-  background: rgba(251, 191, 36, 0.08);
-}
-
-.clinical-note p {
-  color: var(--muted);
-
-  line-height: 1.5;
-}
-
-@media (max-width: 950px) {
-  .sim-layout {
+@media (max-width: 1150px) {
+  .sim-command-layout {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 650px) {
-  .sim-vitals {
+@media (max-width: 900px) {
+  .sim-lower-grid,
+  .results-review-grid,
+  .results-grid-sim {
     grid-template-columns: 1fr;
   }
+}
 
-  .large-ekg {
-    min-height: 140px;
+@media (max-width: 600px) {
+  .sim-monitor-deck,
+  .sim-results-deck {
+    padding: 14px;
+  }
+
+  .sim-monitor-topline {
+    flex-direction: column;
   }
 }

@@ -1,0 +1,13 @@
+.timeline-review h2 { margin-bottom: 12px; }
+.timeline-review div { display: grid; gap: 10px; }
+.timeline-review article {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.timeline-review article.mistake { border-color: rgba(239,68,68,0.2); }
+.timeline-review article.success { border-color: rgba(34,197,94,0.2); }
+.timeline-review span { color: #fbbf24; font-weight: 900; font-size: 0.76rem; }
+.timeline-review strong { display: block; color: white; margin: 4px 0; }
+.timeline-review p { color: #94a3b8; line-height: 1.45; }

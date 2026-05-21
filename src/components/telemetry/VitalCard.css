@@ -1,0 +1,25 @@
+.vital-card-sim {
+  padding: 16px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.vital-card-sim span {
+  display: block;
+  color: #94a3b8;
+  font-weight: 900;
+  font-size: 0.78rem;
+  margin-bottom: 6px;
+}
+.vital-card-sim strong {
+  display: block;
+  color: #fbbf24;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+}
+.vital-card-sim.warning strong { color: #fb923c; }
+.vital-card-sim.critical {
+  border-color: rgba(239,68,68,0.28);
+  background: rgba(239,68,68,0.09);
+}
+.vital-card-sim.critical strong { color: #fca5a5; }

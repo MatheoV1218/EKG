@@ -1,0 +1,43 @@
+.simulation-header-sim {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.sim-header-controls {
+  display: grid;
+  grid-template-columns: repeat(3, auto) auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+}
+.sim-header-controls div {
+  min-width: 86px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+}
+.sim-header-controls span {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+.sim-header-controls strong { color: #fbbf24; }
+.sim-header-controls button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 13px;
+  background: rgba(37, 99, 235, 0.22);
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+@media (max-width: 1050px) {
+  .simulation-header-sim { flex-direction: column; align-items: stretch; }
+  .sim-header-controls { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 620px) {
+  .sim-header-controls { grid-template-columns: 1fr; }
+}

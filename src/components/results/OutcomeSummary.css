@@ -1,0 +1,8 @@
+.outcome-summary {
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+}
+.outcome-summary span { color: #bfdbfe; font-weight: 900; }
+.outcome-summary p { color: #dbeafe; margin-top: 8px; line-height: 1.6; }

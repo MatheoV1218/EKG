@@ -1,0 +1,13 @@
+.shock-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 55;
+  background: rgba(251, 191, 36, 0.16);
+  animation: shockFlash 0.45s ease-out forwards;
+}
+@keyframes shockFlash {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  100% { opacity: 0; }
+}

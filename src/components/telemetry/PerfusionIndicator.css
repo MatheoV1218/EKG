@@ -1,0 +1,20 @@
+.indicator-card {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.indicator-card span {
+  display: block;
+  color: #94a3b8;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.indicator-card strong {
+  color: #bfdbfe;
+  font-size: 1.1rem;
+}
+.perfusion-poor strong,
+.perfusion-absent strong { color: #fca5a5; }
+.perfusion-borderline strong { color: #fbbf24; }
+.perfusion-adequate strong { color: #86efac; }

@@ -1,0 +1,16 @@
+export const perfusionSymptoms = [
+  "cool clammy skin",
+  "delayed capillary refill",
+  "weak radial pulse",
+  "mottled skin",
+  "gray appearance",
+  "poor peripheral perfusion",
+  "cyanotic nail beds",
+  "thready pulses",
+  "ashen appearance",
+  "hypotension",
+  "cold extremities",
+  "decreased urine output",
+  "altered mental status",
+  "narrow pulse pressure",
+];
