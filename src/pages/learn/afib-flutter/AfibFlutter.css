@@ -336,3 +336,460 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ======================================== */
+/* LARGE TABLETS */
+/* ======================================== */
+
+@media (max-width: 1200px) {
+  .lesson-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-card-grid,
+  .unstable-grid,
+  .pearls-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lesson-hero-copy h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+  }
+
+  .lesson-monitor {
+    padding: 18px;
+  }
+
+  .lesson-info-card,
+  .pearl-card,
+  .unstable-card {
+    min-height: auto;
+  }
+}
+
+/* ======================================== */
+/* TABLETS */
+/* ======================================== */
+
+@media (max-width: 900px) {
+  .lesson-page {
+    padding-bottom: 40px;
+  }
+
+  .lesson-hero {
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .lesson-hero-copy {
+    padding: 22px;
+  }
+
+  .lesson-hero-copy h1 {
+    font-size: clamp(2.4rem, 7vw, 3.8rem);
+    line-height: 0.95;
+  }
+
+  .lesson-hero-copy p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .lesson-monitor-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lesson-card-grid,
+  .unstable-grid,
+  .pearls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-dual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.8rem;
+  }
+
+  .lesson-section {
+    margin-bottom: 28px;
+  }
+
+  .lesson-info-card,
+  .pearl-card,
+  .lesson-panel,
+  .flow-step,
+  .mini-quiz {
+    padding: 18px;
+  }
+
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-step {
+    gap: 14px;
+  }
+
+  .flow-number {
+    width: 44px;
+    height: 44px;
+
+    font-size: 1rem;
+  }
+
+  .vital-box strong {
+    font-size: 1.5rem;
+  }
+}
+
+/* ======================================== */
+/* MOBILE */
+/* ======================================== */
+
+@media (max-width: 640px) {
+  .lesson-page {
+    overflow-x: hidden;
+  }
+
+  .lesson-hero-copy {
+    padding: 18px;
+  }
+
+  .lesson-hero-copy h1 {
+    font-size: 2rem;
+  }
+
+  .lesson-hero-tags {
+    gap: 8px;
+  }
+
+  .lesson-hero-tags span {
+    padding: 8px 12px;
+
+    font-size: 0.72rem;
+  }
+
+  .lesson-monitor {
+    padding: 14px;
+  }
+
+  .lesson-monitor-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .lesson-monitor-vitals {
+    gap: 10px;
+  }
+
+  .vital-box {
+    padding: 14px;
+  }
+
+  .vital-box strong {
+    font-size: 1.2rem;
+  }
+
+  .lesson-section {
+    margin-bottom: 22px;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+  .section-line {
+    display: none;
+  }
+
+  .section-heading h2 {
+    font-size: 1.45rem;
+  }
+
+  .lesson-info-card,
+  .pearl-card,
+  .unstable-card,
+  .lesson-panel,
+  .flow-step,
+  .mini-quiz {
+    padding: 14px;
+  }
+
+  .lesson-info-card p,
+  .pearl-card p,
+  .lesson-list-item p,
+  .flow-step p,
+  .quiz-explanation p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .lesson-card-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 14px;
+
+    margin-bottom: 14px;
+  }
+
+  .flow-step {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quiz-question h3 {
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  .quiz-options button {
+    padding: 14px;
+
+    font-size: 0.92rem;
+  }
+
+  .mini-quiz-header h2 {
+    font-size: 1.7rem;
+  }
+}
+
+/* ======================================== */
+/* SMALL MOBILE */
+/* ======================================== */
+
+@media (max-width: 420px) {
+  .lesson-hero-copy h1 {
+    font-size: 1.7rem;
+  }
+
+  .lesson-hero-copy p {
+    font-size: 0.9rem;
+  }
+
+  .lesson-monitor-vitals {
+    grid-template-columns: 1fr;
+  }
+
+  .vital-box {
+    padding: 12px;
+  }
+
+  .vital-box strong {
+    font-size: 1rem;
+  }
+
+  .section-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .lesson-info-card,
+  .pearl-card,
+  .unstable-card,
+  .lesson-panel,
+  .flow-step,
+  .mini-quiz {
+    padding: 12px;
+  }
+
+  .lesson-card-icon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 0.9rem;
+  }
+
+  .flow-number {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+  }
+
+  .quiz-options button {
+    padding: 12px;
+  }
+}
+
+/* ======================================== */
+/* ULTRA MOBILE COMPRESSION */
+/* ======================================== */
+
+@media (max-width: 480px) {
+  .lesson-page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .lesson-hero {
+    gap: 12px;
+
+    margin-bottom: 18px;
+  }
+
+  .lesson-hero-copy {
+    padding: 14px;
+  }
+
+  .lesson-hero-copy h1 {
+    font-size: 1.6rem;
+
+    margin: 10px 0;
+  }
+
+  .lesson-hero-copy p {
+    font-size: 0.82rem;
+
+    line-height: 1.45;
+  }
+
+  .lesson-hero-tags {
+    margin-top: 12px;
+  }
+
+  .lesson-hero-tags span {
+    padding: 6px 10px;
+
+    font-size: 0.65rem;
+  }
+
+  .lesson-monitor {
+    padding: 10px;
+  }
+
+  .lesson-monitor-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .lesson-monitor-vitals {
+    gap: 8px;
+  }
+
+  .vital-box {
+    padding: 10px;
+
+    border-radius: 14px;
+  }
+
+  .vital-box span {
+    font-size: 0.72rem;
+  }
+
+  .vital-box strong {
+    font-size: 0.95rem;
+  }
+
+  .lesson-section {
+    margin-bottom: 18px;
+  }
+
+  .section-heading {
+    margin-bottom: 10px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.2rem;
+  }
+
+  .lesson-card-grid,
+  .unstable-grid,
+  .pearls-grid,
+  .lesson-dual-grid {
+    gap: 10px;
+  }
+
+  .lesson-info-card,
+  .pearl-card,
+  .unstable-card,
+  .lesson-panel,
+  .flow-step,
+  .mini-quiz {
+    padding: 10px !important;
+
+    border-radius: 16px;
+  }
+
+  .lesson-info-card {
+    min-height: unset !important;
+  }
+
+  .lesson-card-icon {
+    width: 30px;
+    height: 30px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+
+    font-size: 0.72rem;
+  }
+
+  .lesson-info-card p,
+  .pearl-card p,
+  .lesson-list-item p,
+  .flow-step p,
+  .quiz-explanation p,
+  .unstable-card p {
+    font-size: 0.8rem;
+
+    line-height: 1.4;
+  }
+
+  .lesson-list {
+    gap: 10px;
+  }
+
+  .lesson-list-item {
+    gap: 8px;
+  }
+
+  .flow-number {
+    width: 30px;
+    height: 30px;
+
+    font-size: 0.75rem;
+
+    border-radius: 10px;
+  }
+
+  .flow-line {
+    height: 18px;
+  }
+
+  .quiz-question h3 {
+    font-size: 0.92rem;
+
+    margin-bottom: 12px;
+  }
+
+  .quiz-options {
+    gap: 8px;
+  }
+
+  .quiz-options button {
+    padding: 10px;
+
+    border-radius: 14px;
+
+    font-size: 0.8rem;
+  }
+
+  .mini-quiz-header h2 {
+    font-size: 1.3rem;
+
+    margin: 10px 0;
+  }
+
+  .mini-quiz-header p {
+    font-size: 0.82rem;
+  }
+}
