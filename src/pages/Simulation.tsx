@@ -5,7 +5,7 @@ import { useSimulation } from "../hooks/useSimulation";
 import EKGCanvas from "../components/telemetry/EKGCanvas";
 import AlarmBanner from "../components/telemetry/AlarmBanner";
 import RhythmLabel from "../components/telemetry/RhythmLabel";
-import TelemetryGrid from "../components/telemetry/TelemetryGrid";
+import LiveMonitor from "../components/telemetry/LiveMonitor";
 
 import SimulationHeader from "../components/simulation/SimulationHeader";
 import SimulationFooter from "../components/simulation/SimulationFooter";
@@ -26,13 +26,20 @@ import DeathOverlay from "../components/overlays/DeathOverlay";
 import "./Simulation.css";
 
 function Simulation() {
-  const { state, performAction, resetSimulation, togglePause, requiredProgress } = useSimulation();
+  const {
+    state,
+    performAction,
+    resetSimulation,
+    togglePause,
+    requiredProgress,
+  } = useSimulation();
 
   const isExpired = state.phase === "expired";
   const isCompleteButNotExpired = state.completed && !isExpired;
 
   const monitorClass = useMemo(() => {
-    if (state.phase === "arrest" || state.phase === "expired") return "critical";
+    if (state.phase === "arrest" || state.phase === "expired")
+      return "critical";
     if (state.phase === "critical") return "warning";
     return "stable";
   }, [state.phase]);
@@ -60,10 +67,23 @@ function Simulation() {
             <AlarmBanner alarms={state.activeAlarms} />
 
             <div className="sim-ekg-frame">
-              <EKGCanvas rhythm={state.rhythm} heartRate={state.vitals.heartRate} height={270} />
+              <EKGCanvas
+                rhythm={state.rhythm}
+                heartRate={state.vitals.heartRate}
+                height={270}
+              />
             </div>
 
-            <TelemetryGrid state={state} />
+            <LiveMonitor
+              rhythm={state.rhythm}
+              heartRate={state.vitals.heartRate}
+              spo2={state.vitals.spo2}
+              bloodPressure={`${state.vitals.systolic}/${state.vitals.diastolic}`}
+              respiratoryRate={state.vitals.respiratoryRate}
+              etco2={state.vitals.etco2}
+              status="watch"
+              alarms={state.activeAlarms}
+            />
           </section>
 
           <div className="sim-lower-grid">
@@ -102,7 +122,11 @@ function Simulation() {
       </div>
 
       <PauseOverlay paused={state.paused} onResume={togglePause} />
-      <SuccessOverlay show={isCompleteButNotExpired} outcome={state.outcome} onRestart={resetSimulation} />
+      <SuccessOverlay
+        show={isCompleteButNotExpired}
+        outcome={state.outcome}
+        onRestart={resetSimulation}
+      />
       <DeathOverlay show={isExpired} onRestart={resetSimulation} />
     </section>
   );
