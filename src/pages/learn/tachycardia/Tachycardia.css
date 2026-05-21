@@ -1,0 +1,338 @@
+.tachycardia-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.tachycardia-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.08), transparent 28%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.tachycardia-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 24px;
+  margin-bottom: 42px;
+  align-items: stretch;
+}
+
+.tachycardia-copy,
+.tachycardia-monitor,
+.tachycardia-panel,
+.tachycardia-card,
+.tachycardia-quiz {
+  position: relative;
+  overflow: hidden;
+}
+
+.tachycardia-copy {
+  padding: 32px;
+}
+
+.tachycardia-copy::before,
+.tachycardia-monitor::before,
+.tachycardia-panel::before,
+.tachycardia-card::before,
+.tachycardia-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent);
+  pointer-events: none;
+}
+
+.tachycardia-copy h1 {
+  margin: 18px 0 16px;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.tachycardia-copy p,
+.tachycardia-panel p,
+.tachycardia-card p,
+.tachycardia-quiz p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.tachycardia-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.tachycardia-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  color: #bfdbfe;
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+
+.tachycardia-monitor {
+  padding: 24px;
+  background: radial-gradient(circle at top right, #f59e0b22, transparent 42%), rgba(10, 16, 36, 0.96);
+}
+
+.tachycardia-monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.tachycardia-monitor-header span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.tachycardia-monitor-header h2 {
+  margin-top: 6px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.tachycardia-status {
+  color: #f59e0b;
+  font-weight: 900;
+  animation: tachycardiaPulse 1.35s infinite;
+}
+
+.tachycardia-vitals {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.tachycardia-vital {
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.tachycardia-vital span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.tachycardia-vital strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+}
+
+.tachycardia-section {
+  margin-bottom: 44px;
+}
+
+.tachycardia-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.tachycardia-heading h2 {
+  white-space: nowrap;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
+
+.tachycardia-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #f59e0b88, transparent);
+}
+
+.tachycardia-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tachycardia-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.tachycardia-panel,
+.tachycardia-card,
+.tachycardia-quiz {
+  padding: 26px;
+}
+
+.tachycardia-card {
+  min-height: 170px;
+  transition: 0.25s ease;
+}
+
+.tachycardia-card:hover {
+  transform: translateY(-5px);
+  border-color: #f59e0b66;
+}
+
+.tachycardia-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--royal-blue), #f59e0b);
+  box-shadow: 0 0 22px #f59e0b44;
+}
+
+.tachycardia-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tachycardia-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tachycardia-item span {
+  color: #f59e0b;
+  font-weight: 900;
+}
+
+.tachycardia-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.tachycardia-step {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #f59e0b18, rgba(15, 23, 42, 0.88));
+  border: 1px solid #f59e0b33;
+}
+
+.tachycardia-step strong {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: #f59e0b;
+  color: #020617;
+}
+
+.tachycardia-warning {
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.09), rgba(15, 23, 42, 0.88));
+}
+
+.tachycardia-quiz {
+  margin-top: 46px;
+}
+
+.tachycardia-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.tachycardia-answers button {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  color: white;
+  font-weight: 800;
+  text-align: left;
+}
+
+.tachycardia-answers .correct {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(145deg, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.88));
+}
+
+.tachycardia-explanation {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid #f59e0b33;
+}
+
+@keyframes tachycardiaPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 1200px) {
+  .tachycardia-hero,
+  .tachycardia-split {
+    grid-template-columns: 1fr;
+  }
+
+  .tachycardia-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tachycardia-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .tachycardia-grid,
+  .tachycardia-flow,
+  .tachycardia-answers {
+    grid-template-columns: 1fr;
+  }
+
+  .tachycardia-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tachycardia-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tachycardia-heading h2 {
+    white-space: normal;
+  }
+
+  .tachycardia-line {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .tachycardia-copy,
+  .tachycardia-monitor,
+  .tachycardia-panel,
+  .tachycardia-card,
+  .tachycardia-quiz {
+    padding: 20px;
+  }
+
+  .tachycardia-vitals {
+    grid-template-columns: 1fr;
+  }
+}

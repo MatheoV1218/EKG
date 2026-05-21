@@ -1,71 +1,54 @@
 import type { QuizCase } from "../types/quizTypes";
 import { oxygenSymptoms } from "../pools/symptoms";
 import { treatmentQuestions } from "../pools/questionPhrases";
-import {
-  lowSpo2,
-  borderlineSpo2,
-  normalSpo2,
-  stableBP,
-  respiratoryRates,
-} from "../pools/vitals";
+import { borderlineSpo2, criticalSpo2, lowSpo2, normalSpo2, stableBP, unstableBP, respiratoryRates } from "../pools/vitals";
+import { buildCase, createRoom, decideOxygenDevice, randomItem, randomNumber, uniqueItems } from "./generatorHelpers";
 
-import {
-  buildCase,
-  createRoom,
-  decideOxygenDevice,
-  randomItem,
-  randomNumber,
-  uniqueItems,
-} from "./generatorHelpers";
+const answers = ["🫁 Nasal Cannula", "🫁 Non-Rebreather Mask", "🫁 Bag-Valve-Mask Ventilation", "👀 Monitor and Reassess"];
+const answerExplanations: Record<string, string> = {
+  "🫁 Nasal Cannula": "Best for mild hypoxemia or increased work of breathing when the patient is still ventilating adequately.",
+  "🫁 Non-Rebreather Mask": "Best for severe hypoxemia/cyanosis when the patient can still breathe adequately on their own.",
+  "🫁 Bag-Valve-Mask Ventilation": "Best when ventilation is failing: apnea, very low RR, shallow breathing, or decreased consciousness.",
+  "👀 Monitor and Reassess": "Correct only when oxygenation and ventilation are stable. Unsafe when SpO₂ is low or ventilation is poor.",
+};
 
 export function generateOxygenCase(): QuizCase {
-  const caseType = Math.floor(Math.random() * 4);
-
-  let symptoms: string[];
-  let vitals;
-  let category: string;
-  let difficulty: "Beginner" | "Intermediate" | "Advanced";
+  const caseType = Math.floor(Math.random() * 7);
+  let category = "Normal Oxygenation";
+  let difficulty: "Beginner" | "Intermediate" | "Advanced" = "Beginner";
+  let rhythm = "Sinus Rhythm";
+  let symptoms = ["speaking clearly", "no respiratory distress"];
+  let vitals = { hr: randomNumber(70, 96), spo2: randomItem(normalSpo2), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.normal) };
 
   if (caseType === 0) {
     category = "Mild Hypoxemia";
-    difficulty = "Beginner";
-    symptoms = uniqueItems(oxygenSymptoms, 2);
-    vitals = {
-      hr: randomNumber(88, 108),
-      spo2: randomItem(borderlineSpo2),
-      bp: randomItem(stableBP),
-      rr: randomItem(respiratoryRates.elevated),
-    };
+    symptoms = uniqueItems(oxygenSymptoms, 3);
+    vitals = { hr: randomNumber(88, 112), spo2: randomItem(borderlineSpo2), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.elevated) };
   } else if (caseType === 1) {
     category = "Severe Hypoxemia";
     difficulty = "Intermediate";
-    symptoms = uniqueItems([...oxygenSymptoms, "cyanosis"], 4);
-    vitals = {
-      hr: randomNumber(115, 138),
-      spo2: randomItem(lowSpo2),
-      bp: randomItem(stableBP),
-      rr: randomItem(respiratoryRates.severe),
-    };
+    symptoms = uniqueItems([...oxygenSymptoms, "cyanosis", "dusky lips"], 4);
+    vitals = { hr: randomNumber(115, 142), spo2: randomItem(lowSpo2), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.severe) };
   } else if (caseType === 2) {
     category = "Ventilatory Failure";
     difficulty = "Advanced";
-    symptoms = ["shallow breathing", "fatigue", "decreased level of consciousness"];
-    vitals = {
-      hr: randomNumber(48, 72),
-      spo2: randomItem(lowSpo2),
-      bp: randomItem(stableBP),
-      rr: randomItem(respiratoryRates.low),
-    };
-  } else {
-    category = "Normal Oxygenation";
-    difficulty = "Beginner";
-    symptoms = ["speaking clearly", "no respiratory distress"];
-    vitals = {
-      hr: randomNumber(70, 96),
-      spo2: randomItem(normalSpo2),
-      bp: randomItem(stableBP),
-      rr: randomItem(respiratoryRates.normal),
-    };
+    symptoms = ["shallow breathing", "fatigue", "decreased level of consciousness", "rapid shallow breathing"];
+    vitals = { hr: randomNumber(48, 78), spo2: randomItem(lowSpo2), bp: randomItem(unstableBP), rr: randomItem(respiratoryRates.low) };
+  } else if (caseType === 3) {
+    category = "Apneic Patient";
+    difficulty = "Advanced";
+    symptoms = ["unresponsive", "apneic", "cyanotic appearance", "no normal breathing"];
+    vitals = { hr: randomNumber(34, 70), spo2: randomItem(criticalSpo2), bp: randomItem(unstableBP), rr: 0 };
+  } else if (caseType === 4) {
+    category = "COPD-Style Moderate Distress";
+    difficulty = "Intermediate";
+    symptoms = ["pursed-lip breathing", "accessory muscle use", "difficulty speaking full sentences"];
+    vitals = { hr: randomNumber(96, 122), spo2: randomItem([88, 89, 90, 91]), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.elevated) };
+  } else if (caseType === 5) {
+    category = "Rapidly Worsening Oxygenation";
+    difficulty = "Advanced";
+    symptoms = ["cyanosis", "restlessness", "tripod positioning", "accessory muscle use"];
+    vitals = { hr: randomNumber(125, 155), spo2: randomItem(criticalSpo2), bp: randomItem(unstableBP), rr: randomItem(respiratoryRates.severe) };
   }
 
   const correctAnswer = decideOxygenDevice(vitals, symptoms);
@@ -74,34 +57,13 @@ export function generateOxygenCase(): QuizCase {
     category,
     difficulty,
     room: createRoom("RESP"),
-    rhythm: caseType === 2 ? "Sinus Bradycardia" : "Sinus Rhythm",
+    rhythm,
     symptoms,
     vitals,
     question: randomItem(treatmentQuestions),
     correctAnswer,
-    answers: [
-      "🫁 Nasal Cannula",
-      "🫁 Non-Rebreather Mask",
-      "🫁 Bag-Valve-Mask Ventilation",
-      "👀 Monitor and Reassess",
-    ],
-    explanation:
-      correctAnswer === "🫁 Bag-Valve-Mask Ventilation"
-        ? "The low respiratory rate and shallow breathing suggest ventilatory failure. Ventilatory support is needed, not just passive oxygen."
-        : correctAnswer === "🫁 Non-Rebreather Mask"
-        ? "The patient has severe hypoxemia or cyanosis, so high-concentration oxygen is the best option listed."
-        : correctAnswer === "🫁 Nasal Cannula"
-        ? "The patient has mild hypoxemia. A nasal cannula is a reasonable first oxygen device with reassessment."
-        : "Oxygen saturation and breathing are acceptable, so monitoring and reassessment are appropriate.",
-    answerExplanations: {
-      "🫁 Nasal Cannula":
-        "Best for mild hypoxemia when the patient is breathing adequately.",
-      "🫁 Non-Rebreather Mask":
-        "Best for severe hypoxemia when the patient is still breathing adequately.",
-      "🫁 Bag-Valve-Mask Ventilation":
-        "Best when ventilation is inadequate, such as very low respiratory rate, shallow breathing, or decreased consciousness.",
-      "👀 Monitor and Reassess":
-        "Correct when oxygenation and breathing are stable, but unsafe if SpO₂ is low or ventilation is failing.",
-    },
+    answers,
+    explanation: `${correctAnswer} is best because oxygen therapy depends on both oxygenation and ventilation. SpO₂ ${vitals.spo2}% with RR ${vitals.rr} and symptoms like ${symptoms.slice(0, 2).join(" and ")} points to this level of support.`,
+    answerExplanations,
   });
 }

@@ -1,0 +1,338 @@
+.oxygen-devices-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.oxygen-devices-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.08), transparent 28%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.oxygen-devices-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 24px;
+  margin-bottom: 42px;
+  align-items: stretch;
+}
+
+.oxygen-devices-copy,
+.oxygen-devices-monitor,
+.oxygen-devices-panel,
+.oxygen-devices-card,
+.oxygen-devices-quiz {
+  position: relative;
+  overflow: hidden;
+}
+
+.oxygen-devices-copy {
+  padding: 32px;
+}
+
+.oxygen-devices-copy::before,
+.oxygen-devices-monitor::before,
+.oxygen-devices-panel::before,
+.oxygen-devices-card::before,
+.oxygen-devices-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent);
+  pointer-events: none;
+}
+
+.oxygen-devices-copy h1 {
+  margin: 18px 0 16px;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.oxygen-devices-copy p,
+.oxygen-devices-panel p,
+.oxygen-devices-card p,
+.oxygen-devices-quiz p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.oxygen-devices-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.oxygen-devices-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  color: #bfdbfe;
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+
+.oxygen-devices-monitor {
+  padding: 24px;
+  background: radial-gradient(circle at top right, #38bdf822, transparent 42%), rgba(10, 16, 36, 0.96);
+}
+
+.oxygen-devices-monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.oxygen-devices-monitor-header span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.oxygen-devices-monitor-header h2 {
+  margin-top: 6px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.oxygen-devices-status {
+  color: #38bdf8;
+  font-weight: 900;
+  animation: oxygen-devicesPulse 1.35s infinite;
+}
+
+.oxygen-devices-vitals {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.oxygen-devices-vital {
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.oxygen-devices-vital span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.oxygen-devices-vital strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+}
+
+.oxygen-devices-section {
+  margin-bottom: 44px;
+}
+
+.oxygen-devices-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.oxygen-devices-heading h2 {
+  white-space: nowrap;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
+
+.oxygen-devices-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #38bdf888, transparent);
+}
+
+.oxygen-devices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.oxygen-devices-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.oxygen-devices-panel,
+.oxygen-devices-card,
+.oxygen-devices-quiz {
+  padding: 26px;
+}
+
+.oxygen-devices-card {
+  min-height: 170px;
+  transition: 0.25s ease;
+}
+
+.oxygen-devices-card:hover {
+  transform: translateY(-5px);
+  border-color: #38bdf866;
+}
+
+.oxygen-devices-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--royal-blue), #38bdf8);
+  box-shadow: 0 0 22px #38bdf844;
+}
+
+.oxygen-devices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.oxygen-devices-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.oxygen-devices-item span {
+  color: #38bdf8;
+  font-weight: 900;
+}
+
+.oxygen-devices-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.oxygen-devices-step {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #38bdf818, rgba(15, 23, 42, 0.88));
+  border: 1px solid #38bdf833;
+}
+
+.oxygen-devices-step strong {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: #38bdf8;
+  color: #020617;
+}
+
+.oxygen-devices-warning {
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.09), rgba(15, 23, 42, 0.88));
+}
+
+.oxygen-devices-quiz {
+  margin-top: 46px;
+}
+
+.oxygen-devices-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.oxygen-devices-answers button {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  color: white;
+  font-weight: 800;
+  text-align: left;
+}
+
+.oxygen-devices-answers .correct {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(145deg, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.88));
+}
+
+.oxygen-devices-explanation {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid #38bdf833;
+}
+
+@keyframes oxygen-devicesPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 1200px) {
+  .oxygen-devices-hero,
+  .oxygen-devices-split {
+    grid-template-columns: 1fr;
+  }
+
+  .oxygen-devices-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .oxygen-devices-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .oxygen-devices-grid,
+  .oxygen-devices-flow,
+  .oxygen-devices-answers {
+    grid-template-columns: 1fr;
+  }
+
+  .oxygen-devices-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .oxygen-devices-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .oxygen-devices-heading h2 {
+    white-space: normal;
+  }
+
+  .oxygen-devices-line {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .oxygen-devices-copy,
+  .oxygen-devices-monitor,
+  .oxygen-devices-panel,
+  .oxygen-devices-card,
+  .oxygen-devices-quiz {
+    padding: 20px;
+  }
+
+  .oxygen-devices-vitals {
+    grid-template-columns: 1fr;
+  }
+}

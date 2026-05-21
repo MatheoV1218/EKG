@@ -628,3 +628,29 @@
   border: 1px solid rgba(34, 197, 94, 0.18);
   color: #dcfce7;
 }
+.answer-card:disabled {
+  cursor: default;
+}
+
+.quiz-stat.wide-stat strong {
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+@media (max-width: 1050px) {
+  .quiz-sidebar {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .quiz-sidebar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .quiz-sidebar {
+    grid-template-columns: 1fr;
+  }
+}

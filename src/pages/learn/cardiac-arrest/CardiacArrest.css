@@ -1,0 +1,338 @@
+.cardiac-arrest-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cardiac-arrest-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.08), transparent 28%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cardiac-arrest-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 24px;
+  margin-bottom: 42px;
+  align-items: stretch;
+}
+
+.cardiac-arrest-copy,
+.cardiac-arrest-monitor,
+.cardiac-arrest-panel,
+.cardiac-arrest-card,
+.cardiac-arrest-quiz {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardiac-arrest-copy {
+  padding: 32px;
+}
+
+.cardiac-arrest-copy::before,
+.cardiac-arrest-monitor::before,
+.cardiac-arrest-panel::before,
+.cardiac-arrest-card::before,
+.cardiac-arrest-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent);
+  pointer-events: none;
+}
+
+.cardiac-arrest-copy h1 {
+  margin: 18px 0 16px;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.cardiac-arrest-copy p,
+.cardiac-arrest-panel p,
+.cardiac-arrest-card p,
+.cardiac-arrest-quiz p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.cardiac-arrest-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.cardiac-arrest-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  color: #bfdbfe;
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+
+.cardiac-arrest-monitor {
+  padding: 24px;
+  background: radial-gradient(circle at top right, #ef444422, transparent 42%), rgba(10, 16, 36, 0.96);
+}
+
+.cardiac-arrest-monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.cardiac-arrest-monitor-header span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.cardiac-arrest-monitor-header h2 {
+  margin-top: 6px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.cardiac-arrest-status {
+  color: #ef4444;
+  font-weight: 900;
+  animation: cardiac-arrestPulse 1.35s infinite;
+}
+
+.cardiac-arrest-vitals {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.cardiac-arrest-vital {
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.cardiac-arrest-vital span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.cardiac-arrest-vital strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+}
+
+.cardiac-arrest-section {
+  margin-bottom: 44px;
+}
+
+.cardiac-arrest-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.cardiac-arrest-heading h2 {
+  white-space: nowrap;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
+
+.cardiac-arrest-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #ef444488, transparent);
+}
+
+.cardiac-arrest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.cardiac-arrest-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.cardiac-arrest-panel,
+.cardiac-arrest-card,
+.cardiac-arrest-quiz {
+  padding: 26px;
+}
+
+.cardiac-arrest-card {
+  min-height: 170px;
+  transition: 0.25s ease;
+}
+
+.cardiac-arrest-card:hover {
+  transform: translateY(-5px);
+  border-color: #ef444466;
+}
+
+.cardiac-arrest-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--royal-blue), #ef4444);
+  box-shadow: 0 0 22px #ef444444;
+}
+
+.cardiac-arrest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardiac-arrest-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.cardiac-arrest-item span {
+  color: #ef4444;
+  font-weight: 900;
+}
+
+.cardiac-arrest-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.cardiac-arrest-step {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ef444418, rgba(15, 23, 42, 0.88));
+  border: 1px solid #ef444433;
+}
+
+.cardiac-arrest-step strong {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: #ef4444;
+  color: #020617;
+}
+
+.cardiac-arrest-warning {
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.09), rgba(15, 23, 42, 0.88));
+}
+
+.cardiac-arrest-quiz {
+  margin-top: 46px;
+}
+
+.cardiac-arrest-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.cardiac-arrest-answers button {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  color: white;
+  font-weight: 800;
+  text-align: left;
+}
+
+.cardiac-arrest-answers .correct {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(145deg, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.88));
+}
+
+.cardiac-arrest-explanation {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid #ef444433;
+}
+
+@keyframes cardiac-arrestPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 1200px) {
+  .cardiac-arrest-hero,
+  .cardiac-arrest-split {
+    grid-template-columns: 1fr;
+  }
+
+  .cardiac-arrest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardiac-arrest-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .cardiac-arrest-grid,
+  .cardiac-arrest-flow,
+  .cardiac-arrest-answers {
+    grid-template-columns: 1fr;
+  }
+
+  .cardiac-arrest-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardiac-arrest-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardiac-arrest-heading h2 {
+    white-space: normal;
+  }
+
+  .cardiac-arrest-line {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .cardiac-arrest-copy,
+  .cardiac-arrest-monitor,
+  .cardiac-arrest-panel,
+  .cardiac-arrest-card,
+  .cardiac-arrest-quiz {
+    padding: 20px;
+  }
+
+  .cardiac-arrest-vitals {
+    grid-template-columns: 1fr;
+  }
+}

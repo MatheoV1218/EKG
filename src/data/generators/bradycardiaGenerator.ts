@@ -1,83 +1,76 @@
 import type { QuizCase } from "../types/quizTypes";
 import { bradySymptoms, stableSymptoms } from "../pools/symptoms";
 import { treatmentQuestions } from "../pools/questionPhrases";
-import {
-  unstableBP,
-  stableBP,
-  normalSpo2,
-  borderlineSpo2,
-  lowSpo2,
-  respiratoryRates,
-} from "../pools/vitals";
+import { borderlineSpo2, lowSpo2, normalSpo2, stableBP, unstableBP, criticalBP, respiratoryRates } from "../pools/vitals";
+import { buildCase, chance, createRoom, decideBradycardiaTreatment, randomItem, randomNumber, uniqueItems } from "./generatorHelpers";
 
-import {
-  buildCase,
-  createRoom,
-  decideBradycardiaTreatment,
-  randomItem,
-  randomNumber,
-  uniqueItems,
-} from "./generatorHelpers";
+const answers = ["💊 Atropine", "⚡ Prepare Transcutaneous Pacing", "🫁 Apply Oxygen", "👀 Monitor and Reassess"];
+
+const answerExplanations: Record<string, string> = {
+  "💊 Atropine": "Appropriate for symptomatic bradycardia with poor perfusion when the patient is not already in an immediately pacing-level presentation.",
+  "⚡ Prepare Transcutaneous Pacing": "Best for severe unstable bradycardia, especially very low heart rate, older age, severe hypotension, or poor response concern.",
+  "🫁 Apply Oxygen": "Best when hypoxemia is a major immediate threat or respiratory depression is contributing to the bradycardia.",
+  "👀 Monitor and Reassess": "Correct for stable bradycardia, such as an alert patient with good BP and no poor perfusion signs.",
+};
 
 export function generateBradycardiaCase(): QuizCase {
-  const symptomatic = Math.random() > 0.25;
-  const olderCritical = Math.random() > 0.72;
+  const caseType = Math.floor(Math.random() * 6);
+  const age = caseType === 1 || caseType === 3 ? randomNumber(70, 92) : randomNumber(18, 70);
 
-  const age = olderCritical ? randomNumber(75, 90) : randomNumber(35, 74);
+  let category = "Stable Bradycardia";
+  let difficulty: "Beginner" | "Intermediate" | "Advanced" = "Beginner";
+  let rhythm = "Stable Bradycardia";
+  let symptoms = uniqueItems(stableSymptoms, 3);
+  let vitals = { hr: randomNumber(44, 58), spo2: randomItem(normalSpo2), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.normal) };
 
-  const symptoms = symptomatic
-    ? uniqueItems(bradySymptoms, 3)
-    : uniqueItems(stableSymptoms, 2);
-
-  const vitals = symptomatic
-    ? {
-        hr: olderCritical ? randomNumber(28, 38) : randomNumber(35, 48),
-        spo2: olderCritical ? randomItem(lowSpo2) : randomItem(borderlineSpo2),
-        bp: olderCritical ? "70/40" : randomItem(unstableBP),
-        rr: olderCritical ? randomItem(respiratoryRates.low) : randomItem(respiratoryRates.normal),
-      }
-    : {
-        hr: randomNumber(48, 58),
-        spo2: randomItem(normalSpo2),
-        bp: randomItem(stableBP),
-        rr: randomItem(respiratoryRates.normal),
-      };
+  if (caseType === 0) {
+    category = "Athletic / Stable Bradycardia";
+    symptoms = ["alert and oriented", "speaking clearly", "stable blood pressure", "no chest pain"];
+    vitals = { hr: randomNumber(42, 52), spo2: randomItem(normalSpo2), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.normal) };
+  } else if (caseType === 1) {
+    category = "Severe Symptomatic Bradycardia";
+    difficulty = "Advanced";
+    rhythm = "Symptomatic Bradycardia";
+    symptoms = ["altered mental status", "weak pulses", "cool extremities", "poor perfusion"];
+    vitals = { hr: randomNumber(24, 36), spo2: randomItem(borderlineSpo2), bp: randomItem(criticalBP), rr: randomItem(respiratoryRates.low) };
+  } else if (caseType === 2) {
+    category = "Symptomatic Bradycardia";
+    difficulty = "Intermediate";
+    rhythm = "Symptomatic Bradycardia";
+    symptoms = uniqueItems(bradySymptoms, 4);
+    vitals = { hr: randomNumber(36, 48), spo2: randomItem(borderlineSpo2), bp: randomItem(unstableBP), rr: randomItem(respiratoryRates.normal) };
+  } else if (caseType === 3) {
+    category = "Hypoxic Bradycardia";
+    difficulty = "Advanced";
+    rhythm = "Sinus Bradycardia with Hypoxemia";
+    symptoms = ["shortness of breath", "decreased level of consciousness", "shallow breathing", "cyanosis"];
+    vitals = { hr: randomNumber(34, 52), spo2: randomItem(lowSpo2), bp: randomItem(unstableBP), rr: randomItem(respiratoryRates.low) };
+  } else if (caseType === 4) {
+    category = "Medication-Associated Bradycardia";
+    difficulty = "Intermediate";
+    rhythm = "Symptomatic Bradycardia";
+    symptoms = uniqueItems(["dizziness", "fatigue", "weakness", "recent beta blocker dose", "stable blood pressure"], 3);
+    vitals = { hr: randomNumber(38, 48), spo2: randomItem(normalSpo2), bp: chance(0.45) ? randomItem(unstableBP) : randomItem(stableBP), rr: randomItem(respiratoryRates.normal) };
+  } else {
+    category = "Borderline Bradycardia";
+    symptoms = uniqueItems(["mild dizziness", "fatigue", "alert and oriented", "strong radial pulse", "no chest pain"], 3);
+    vitals = { hr: randomNumber(50, 58), spo2: randomItem(normalSpo2), bp: randomItem(stableBP), rr: randomItem(respiratoryRates.normal) };
+  }
 
   const correctAnswer = decideBradycardiaTreatment(vitals, symptoms, age);
 
   return buildCase({
-    category: symptomatic ? "Symptomatic Bradycardia" : "Stable Bradycardia",
-    difficulty: correctAnswer === "⚡ Prepare Transcutaneous Pacing" ? "Advanced" : symptomatic ? "Intermediate" : "Beginner",
+    category,
+    difficulty,
     age,
-    room: createRoom(symptomatic ? "ICU" : "TELE"),
-    rhythm: symptomatic ? "Symptomatic Bradycardia" : "Stable Bradycardia",
+    room: createRoom(category.includes("Severe") ? "ICU" : "TELE"),
+    rhythm,
     symptoms,
     vitals,
     question: randomItem(treatmentQuestions),
     correctAnswer,
-    answers: [
-      "💊 Atropine",
-      "⚡ Prepare Transcutaneous Pacing",
-      "🫁 Apply Oxygen",
-      "👀 Monitor and Reassess",
-    ],
-    explanation:
-      correctAnswer === "⚡ Prepare Transcutaneous Pacing"
-        ? "This older patient has severe symptomatic bradycardia with very poor perfusion. Preparing pacing is the safest escalation while supporting oxygenation and circulation."
-        : correctAnswer === "💊 Atropine"
-        ? "The patient has symptomatic bradycardia with poor perfusion. Atropine is appropriate as an initial intervention while preparing escalation if needed."
-        : correctAnswer === "🫁 Apply Oxygen"
-        ? "The patient is bradycardic and hypoxemic. Oxygenation must be corrected while monitoring the rhythm and perfusion."
-        : "The heart rate is low, but the patient is stable. Monitoring and reassessment are appropriate.",
-    answerExplanations: {
-      "💊 Atropine":
-        "Appropriate for symptomatic bradycardia with signs of poor perfusion. It may not be enough alone in severe unstable cases.",
-      "⚡ Prepare Transcutaneous Pacing":
-        "Best when bradycardia is severe, the patient is unstable, or medication response may not be enough.",
-      "🫁 Apply Oxygen":
-        "Correct when hypoxemia is a major part of the presentation, especially with low SpO₂ or respiratory depression.",
-      "👀 Monitor and Reassess":
-        "Correct for stable bradycardia, but not enough for symptomatic hypotensive bradycardia.",
-    },
+    answers,
+    explanation: `${correctAnswer} is the safest choice because bradycardia treatment depends on symptoms and perfusion, not heart rate alone. This patient is ${age} years old with HR ${vitals.hr}, BP ${vitals.bp}, SpO₂ ${vitals.spo2}%, and symptoms including ${symptoms.slice(0, 2).join(" and ")}.`,
+    answerExplanations,
   });
 }

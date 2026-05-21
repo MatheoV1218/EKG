@@ -1,0 +1,338 @@
+.airway-management-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.airway-management-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.08), transparent 28%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.airway-management-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 24px;
+  margin-bottom: 42px;
+  align-items: stretch;
+}
+
+.airway-management-copy,
+.airway-management-monitor,
+.airway-management-panel,
+.airway-management-card,
+.airway-management-quiz {
+  position: relative;
+  overflow: hidden;
+}
+
+.airway-management-copy {
+  padding: 32px;
+}
+
+.airway-management-copy::before,
+.airway-management-monitor::before,
+.airway-management-panel::before,
+.airway-management-card::before,
+.airway-management-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent);
+  pointer-events: none;
+}
+
+.airway-management-copy h1 {
+  margin: 18px 0 16px;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.airway-management-copy p,
+.airway-management-panel p,
+.airway-management-card p,
+.airway-management-quiz p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.airway-management-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.airway-management-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  color: #bfdbfe;
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+
+.airway-management-monitor {
+  padding: 24px;
+  background: radial-gradient(circle at top right, #fbbf2422, transparent 42%), rgba(10, 16, 36, 0.96);
+}
+
+.airway-management-monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.airway-management-monitor-header span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.airway-management-monitor-header h2 {
+  margin-top: 6px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.airway-management-status {
+  color: #fbbf24;
+  font-weight: 900;
+  animation: airway-managementPulse 1.35s infinite;
+}
+
+.airway-management-vitals {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.airway-management-vital {
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.airway-management-vital span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.airway-management-vital strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+}
+
+.airway-management-section {
+  margin-bottom: 44px;
+}
+
+.airway-management-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.airway-management-heading h2 {
+  white-space: nowrap;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
+
+.airway-management-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #fbbf2488, transparent);
+}
+
+.airway-management-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.airway-management-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.airway-management-panel,
+.airway-management-card,
+.airway-management-quiz {
+  padding: 26px;
+}
+
+.airway-management-card {
+  min-height: 170px;
+  transition: 0.25s ease;
+}
+
+.airway-management-card:hover {
+  transform: translateY(-5px);
+  border-color: #fbbf2466;
+}
+
+.airway-management-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--royal-blue), #fbbf24);
+  box-shadow: 0 0 22px #fbbf2444;
+}
+
+.airway-management-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.airway-management-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.airway-management-item span {
+  color: #fbbf24;
+  font-weight: 900;
+}
+
+.airway-management-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.airway-management-step {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #fbbf2418, rgba(15, 23, 42, 0.88));
+  border: 1px solid #fbbf2433;
+}
+
+.airway-management-step strong {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: #fbbf24;
+  color: #020617;
+}
+
+.airway-management-warning {
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.09), rgba(15, 23, 42, 0.88));
+}
+
+.airway-management-quiz {
+  margin-top: 46px;
+}
+
+.airway-management-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.airway-management-answers button {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  color: white;
+  font-weight: 800;
+  text-align: left;
+}
+
+.airway-management-answers .correct {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(145deg, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.88));
+}
+
+.airway-management-explanation {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid #fbbf2433;
+}
+
+@keyframes airway-managementPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 1200px) {
+  .airway-management-hero,
+  .airway-management-split {
+    grid-template-columns: 1fr;
+  }
+
+  .airway-management-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .airway-management-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .airway-management-grid,
+  .airway-management-flow,
+  .airway-management-answers {
+    grid-template-columns: 1fr;
+  }
+
+  .airway-management-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .airway-management-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .airway-management-heading h2 {
+    white-space: normal;
+  }
+
+  .airway-management-line {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .airway-management-copy,
+  .airway-management-monitor,
+  .airway-management-panel,
+  .airway-management-card,
+  .airway-management-quiz {
+    padding: 20px;
+  }
+
+  .airway-management-vitals {
+    grid-template-columns: 1fr;
+  }
+}

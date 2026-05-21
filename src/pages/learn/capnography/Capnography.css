@@ -1,0 +1,338 @@
+.capnography-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.capnography-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.08), transparent 28%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.capnography-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 24px;
+  margin-bottom: 42px;
+  align-items: stretch;
+}
+
+.capnography-copy,
+.capnography-monitor,
+.capnography-panel,
+.capnography-card,
+.capnography-quiz {
+  position: relative;
+  overflow: hidden;
+}
+
+.capnography-copy {
+  padding: 32px;
+}
+
+.capnography-copy::before,
+.capnography-monitor::before,
+.capnography-panel::before,
+.capnography-card::before,
+.capnography-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent);
+  pointer-events: none;
+}
+
+.capnography-copy h1 {
+  margin: 18px 0 16px;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.capnography-copy p,
+.capnography-panel p,
+.capnography-card p,
+.capnography-quiz p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.capnography-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.capnography-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  color: #bfdbfe;
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+
+.capnography-monitor {
+  padding: 24px;
+  background: radial-gradient(circle at top right, #22d3ee22, transparent 42%), rgba(10, 16, 36, 0.96);
+}
+
+.capnography-monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.capnography-monitor-header span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.capnography-monitor-header h2 {
+  margin-top: 6px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -0.05em;
+}
+
+.capnography-status {
+  color: #22d3ee;
+  font-weight: 900;
+  animation: capnographyPulse 1.35s infinite;
+}
+
+.capnography-vitals {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.capnography-vital {
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.capnography-vital span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.capnography-vital strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+}
+
+.capnography-section {
+  margin-bottom: 44px;
+}
+
+.capnography-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.capnography-heading h2 {
+  white-space: nowrap;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
+
+.capnography-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #22d3ee88, transparent);
+}
+
+.capnography-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.capnography-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.capnography-panel,
+.capnography-card,
+.capnography-quiz {
+  padding: 26px;
+}
+
+.capnography-card {
+  min-height: 170px;
+  transition: 0.25s ease;
+}
+
+.capnography-card:hover {
+  transform: translateY(-5px);
+  border-color: #22d3ee66;
+}
+
+.capnography-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--royal-blue), #22d3ee);
+  box-shadow: 0 0 22px #22d3ee44;
+}
+
+.capnography-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.capnography-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.capnography-item span {
+  color: #22d3ee;
+  font-weight: 900;
+}
+
+.capnography-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.capnography-step {
+  padding: 22px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #22d3ee18, rgba(15, 23, 42, 0.88));
+  border: 1px solid #22d3ee33;
+}
+
+.capnography-step strong {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: #22d3ee;
+  color: #020617;
+}
+
+.capnography-warning {
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.09), rgba(15, 23, 42, 0.88));
+}
+
+.capnography-quiz {
+  margin-top: 46px;
+}
+
+.capnography-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.capnography-answers button {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  color: white;
+  font-weight: 800;
+  text-align: left;
+}
+
+.capnography-answers .correct {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(145deg, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.88));
+}
+
+.capnography-explanation {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid #22d3ee33;
+}
+
+@keyframes capnographyPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 1200px) {
+  .capnography-hero,
+  .capnography-split {
+    grid-template-columns: 1fr;
+  }
+
+  .capnography-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .capnography-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .capnography-grid,
+  .capnography-flow,
+  .capnography-answers {
+    grid-template-columns: 1fr;
+  }
+
+  .capnography-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .capnography-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .capnography-heading h2 {
+    white-space: normal;
+  }
+
+  .capnography-line {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .capnography-copy,
+  .capnography-monitor,
+  .capnography-panel,
+  .capnography-card,
+  .capnography-quiz {
+    padding: 20px;
+  }
+
+  .capnography-vitals {
+    grid-template-columns: 1fr;
+  }
+}
