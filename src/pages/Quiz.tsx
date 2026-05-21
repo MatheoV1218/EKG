@@ -87,6 +87,7 @@ function Quiz() {
 
             <div className="monitor-ekg">
               <EKGCanvas
+                key="quiz-monitor"
                 rhythm={
                   caseData.rhythm.toLowerCase().includes("tach")
                     ? "sinus-tach"

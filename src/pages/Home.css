@@ -1,6 +1,7 @@
 .home-page {
   position: relative;
   padding-bottom: 100px;
+  overflow-x: hidden;
 }
 
 .home-page::before {
@@ -14,11 +15,14 @@
   height: 500px;
 
   background:
-    radial-gradient(circle,
-      rgba(37,99,235,0.15),
-      transparent 70%);
+    radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.15),
+      transparent 70%
+    );
 
   pointer-events: none;
+  z-index: 0;
 }
 
 .home-page::after {
@@ -32,29 +36,43 @@
   height: 600px;
 
   background:
-    radial-gradient(circle,
-      rgba(251,191,36,0.12),
-      transparent 70%);
+    radial-gradient(
+      circle,
+      rgba(251, 191, 36, 0.12),
+      transparent 70%
+    );
 
   pointer-events: none;
+  z-index: 0;
 }
 
 .home-hero.upgraded {
+  position: relative;
+  z-index: 2;
+
   display: grid;
   grid-template-columns: 1fr 0.95fr;
+
   gap: 28px;
   align-items: center;
+
+  width: 100%;
 }
 
 .hero-copy {
   position: relative;
   z-index: 2;
+
+  min-width: 0;
 }
 
 .hero-copy p {
   color: var(--muted);
+
   line-height: 1.8;
+
   max-width: 650px;
+
   font-size: 1.08rem;
 }
 
@@ -62,7 +80,13 @@
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+
   margin-top: 26px;
+}
+
+.hero-actions button,
+.hero-actions a {
+  min-width: 160px;
 }
 
 .hero-mini-grid {
@@ -72,6 +96,7 @@
   grid-template-columns: repeat(3, 1fr);
 
   gap: 14px;
+
   max-width: 580px;
 }
 
@@ -80,6 +105,7 @@
   overflow: hidden;
 
   padding: 18px;
+
   border-radius: 24px;
 
   background:
@@ -88,6 +114,8 @@
       rgba(255,255,255,0.06),
       rgba(255,255,255,0.03)
     );
+
+  border: 1px solid rgba(255,255,255,0.06);
 
   transition:
     transform 0.25s ease,
@@ -100,8 +128,11 @@
 
 .hero-mini-grid strong {
   display: block;
+
   color: var(--gold);
+
   font-size: 2rem;
+
   letter-spacing: -0.05em;
 }
 
@@ -117,9 +148,47 @@
   grid-template-columns: 1fr 1fr;
 
   gap: 20px;
+
+  width: 100%;
 }
 
-@media (max-width: 1000px) {
+.live-monitor {
+  width: 100%;
+  min-width: 0;
+}
+
+.stats-grid,
+.training-grid,
+.achievement-grid,
+.rhythm-grid {
+  width: 100%;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+
+  margin: 0;
+
+  word-break: break-word;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+}
+
+.monitor-vitals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* ========================= */
+/* LARGE TABLETS */
+/* ========================= */
+
+@media (max-width: 1100px) {
   .home-hero.upgraded {
     grid-template-columns: 1fr;
   }
@@ -127,11 +196,31 @@
   .home-dual-section {
     grid-template-columns: 1fr;
   }
+
+  .hero-copy p {
+    max-width: 100%;
+  }
+
+  .live-monitor {
+    width: 100%;
+  }
 }
 
-@media (max-width: 650px) {
+/* ========================= */
+/* TABLETS */
+/* ========================= */
+
+@media (max-width: 850px) {
+  .hero-title {
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+
   .hero-copy {
     text-align: center;
+  }
+
+  .hero-copy p {
+    margin-inline: auto;
   }
 
   .hero-actions {
@@ -139,6 +228,89 @@
   }
 
   .hero-mini-grid {
+    max-width: 100%;
+  }
+
+  .monitor-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 640px) {
+  .home-page {
+    padding-bottom: 60px;
+  }
+
+  .home-hero.upgraded {
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+    line-height: 0.95;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions button,
+  .hero-actions a {
+    width: 100%;
+  }
+
+  .hero-mini-grid {
     grid-template-columns: 1fr;
+  }
+
+  .stats-grid,
+  .training-grid,
+  .achievement-grid,
+  .rhythm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monitor-vitals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-dual-section {
+    gap: 16px;
+  }
+
+  .live-monitor {
+    overflow: hidden;
+  }
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 2.3rem;
+  }
+
+  .hero-copy p {
+    font-size: 0.95rem;
+  }
+
+  .hero-mini-grid strong {
+    font-size: 1.6rem;
+  }
+
+  .hero-mini-grid div {
+    padding: 16px;
   }
 }
