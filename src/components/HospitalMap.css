@@ -1,0 +1,111 @@
+.hospital-map-section {
+  margin-top: 36px;
+}
+
+.hospital-map {
+  padding: 18px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.hospital-zone {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 180px;
+
+  padding: 22px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.03)
+    );
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hospital-zone::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      130deg,
+      transparent,
+      rgba(255,255,255,0.03),
+      transparent
+    );
+
+  transform: translateX(-100%);
+  transition: 0.8s ease;
+}
+
+.hospital-zone:hover::before {
+  transform: translateX(100%);
+}
+
+.hospital-zone:hover {
+  transform: translateY(-5px);
+}
+
+.hospital-zone h3 {
+  margin: 0 0 12px;
+
+  font-size: clamp(2rem, 4vw, 3rem);
+
+  letter-spacing: -0.06em;
+}
+
+.hospital-zone p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.hospital-zone.critical {
+  border: 1px solid rgba(239,68,68,0.22);
+}
+
+.hospital-zone.critical:hover {
+  box-shadow:
+    0 0 30px rgba(239,68,68,0.12);
+}
+
+.hospital-zone.warning {
+  border: 1px solid rgba(251,191,36,0.22);
+}
+
+.hospital-zone.warning:hover {
+  box-shadow:
+    0 0 30px rgba(251,191,36,0.12);
+}
+
+.hospital-zone.stable {
+  border: 1px solid rgba(34,197,94,0.18);
+}
+
+.hospital-zone.stable:hover {
+  box-shadow:
+    0 0 30px rgba(34,197,94,0.12);
+}
+
+@media (max-width: 900px) {
+  .hospital-map {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-zone {
+    min-height: 150px;
+  }
+}

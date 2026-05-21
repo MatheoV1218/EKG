@@ -1,0 +1,136 @@
+.sim-header {
+  margin-bottom: 18px;
+}
+
+.sim-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+
+  gap: 16px;
+}
+
+.patient-monitor,
+.treatment-panel {
+  padding: 18px;
+}
+
+.monitor-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+}
+
+.monitor-header span,
+.monitor-header strong {
+  color: var(--muted);
+}
+
+.monitor-header h2 {
+  margin: 4px 0 0;
+
+  font-size: 1.7rem;
+
+  letter-spacing: -0.04em;
+}
+
+.large-ekg {
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    rgba(2, 6, 23, 0.82);
+
+  background-size: 26px 26px;
+
+  border: 1px solid rgba(34, 211, 238, 0.12);
+}
+
+.sim-vitals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-top: 14px;
+}
+
+.sim-vitals div {
+  padding: 16px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sim-vitals span {
+  color: var(--muted);
+
+  font-weight: 800;
+}
+
+.sim-vitals strong {
+  display: block;
+
+  font-size: 1.7rem;
+
+  color: var(--gold);
+}
+
+.treatment-panel button {
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  padding: 13px;
+
+  border-radius: 16px;
+
+  border: none;
+
+  background: rgba(37, 99, 235, 0.14);
+
+  color: white;
+
+  font-weight: 800;
+}
+
+.clinical-note {
+  margin-top: 14px;
+
+  padding: 16px;
+
+  border-radius: 18px;
+
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.clinical-note p {
+  color: var(--muted);
+
+  line-height: 1.5;
+}
+
+@media (max-width: 950px) {
+  .sim-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .sim-vitals {
+    grid-template-columns: 1fr;
+  }
+
+  .large-ekg {
+    min-height: 140px;
+  }
+}

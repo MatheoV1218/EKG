@@ -1,0 +1,43 @@
+.floating-particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.floating-particles span {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(251, 191, 36, 0.22);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.35);
+  animation: floatParticle 12s infinite ease-in-out;
+}
+
+.floating-particles span:nth-child(odd) {
+  background: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+.floating-particles span:nth-child(1) { left: 8%; top: 20%; animation-delay: 0s; }
+.floating-particles span:nth-child(2) { left: 18%; top: 70%; animation-delay: 1s; }
+.floating-particles span:nth-child(3) { left: 28%; top: 35%; animation-delay: 2s; }
+.floating-particles span:nth-child(4) { left: 42%; top: 80%; animation-delay: 3s; }
+.floating-particles span:nth-child(5) { left: 55%; top: 25%; animation-delay: 4s; }
+.floating-particles span:nth-child(6) { left: 66%; top: 65%; animation-delay: 5s; }
+.floating-particles span:nth-child(7) { left: 78%; top: 18%; animation-delay: 6s; }
+.floating-particles span:nth-child(8) { left: 88%; top: 78%; animation-delay: 7s; }
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateY(-38px) scale(1.5);
+    opacity: 0.8;
+  }
+}

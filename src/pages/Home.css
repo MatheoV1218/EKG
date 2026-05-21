@@ -1,0 +1,144 @@
+.home-page {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.home-page::before {
+  content: "";
+
+  position: absolute;
+  top: -200px;
+  left: -200px;
+
+  width: 500px;
+  height: 500px;
+
+  background:
+    radial-gradient(circle,
+      rgba(37,99,235,0.15),
+      transparent 70%);
+
+  pointer-events: none;
+}
+
+.home-page::after {
+  content: "";
+
+  position: absolute;
+  bottom: -300px;
+  right: -300px;
+
+  width: 600px;
+  height: 600px;
+
+  background:
+    radial-gradient(circle,
+      rgba(251,191,36,0.12),
+      transparent 70%);
+
+  pointer-events: none;
+}
+
+.home-hero.upgraded {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-copy p {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 650px;
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.hero-mini-grid {
+  margin-top: 28px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+  max-width: 580px;
+}
+
+.hero-mini-grid div {
+  position: relative;
+  overflow: hidden;
+
+  padding: 18px;
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.03)
+    );
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.hero-mini-grid div:hover {
+  transform: translateY(-4px);
+}
+
+.hero-mini-grid strong {
+  display: block;
+  color: var(--gold);
+  font-size: 2rem;
+  letter-spacing: -0.05em;
+}
+
+.hero-mini-grid span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.home-dual-section {
+  margin-top: 34px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+@media (max-width: 1000px) {
+  .home-hero.upgraded {
+    grid-template-columns: 1fr;
+  }
+
+  .home-dual-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-mini-grid {
+    grid-template-columns: 1fr;
+  }
+}

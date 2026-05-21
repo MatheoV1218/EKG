@@ -1,0 +1,51 @@
+.daily-challenge {
+  margin-top: 28px;
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 22px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.daily-challenge h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.07em;
+  margin: 16px 0 8px;
+}
+
+.daily-challenge p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.challenge-panel {
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  text-align: center;
+}
+
+.challenge-panel span {
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.challenge-panel strong {
+  display: block;
+  color: var(--gold);
+  font-size: 3rem;
+}
+
+.challenge-panel em {
+  color: #fecaca;
+  font-style: normal;
+  font-weight: 900;
+}
+
+@media (max-width: 720px) {
+  .daily-challenge {
+    grid-template-columns: 1fr;
+  }
+}

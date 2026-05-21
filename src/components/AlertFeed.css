@@ -1,0 +1,147 @@
+.alert-feed {
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.alert-feed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left,
+      rgba(239,68,68,0.08),
+      transparent 40%);
+  pointer-events: none;
+}
+
+.section-mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-mini-header strong {
+  color: #22c55e;
+  animation: blinkAlert 1.2s infinite;
+}
+
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.alert-card {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+
+  padding: 18px;
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.03)
+    );
+
+  transition: 0.3s ease;
+}
+
+.alert-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.alert-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.04),
+      transparent
+    );
+
+  transform: translateX(-100%);
+  transition: 0.7s ease;
+}
+
+.alert-card:hover::before {
+  transform: translateX(100%);
+}
+
+.alert-card.critical {
+  border: 1px solid rgba(239,68,68,0.22);
+  box-shadow:
+    0 0 20px rgba(239,68,68,0.08);
+}
+
+.alert-card.warning {
+  border: 1px solid rgba(251,191,36,0.22);
+  box-shadow:
+    0 0 20px rgba(251,191,36,0.08);
+}
+
+.alert-card span {
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.alert-card h3 {
+  margin: 6px 0;
+}
+
+.alert-card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.alert-card button {
+  border: none;
+  border-radius: 999px;
+
+  padding: 12px 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37,99,235,0.45),
+      rgba(37,99,235,0.2)
+    );
+
+  color: white;
+  font-weight: 900;
+
+  transition: 0.25s ease;
+}
+
+.alert-card button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes blinkAlert {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 650px) {
+  .alert-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
