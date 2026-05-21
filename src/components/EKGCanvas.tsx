@@ -204,7 +204,7 @@ function EKGCanvas({
       }
     }
 
-    function drawWave(width: number, heightPx: number) {
+    function drawWave(heightPx: number) {
       const color = getColor();
 
       const mid = heightPx / 2;
@@ -292,7 +292,7 @@ function EKGCanvas({
         pointsRef.current.shift();
       }
 
-      drawWave(width, heightPx);
+      drawWave(heightPx);
 
       const scan = ctx.createLinearGradient(width - 90, 0, width, 0);
 
